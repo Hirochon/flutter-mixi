@@ -77,13 +77,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 300,
                 width: 300,
                 child: GridView.count(
-                  crossAxisCount: 3,
+                  crossAxisCount: 4,
                   children: [
-                    for (var i = 0; i < 9; i++)
+                    for (var i = 0; i < 16; i++)
                       const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: ColoredBox(
-                          color: Colors.amber,
+                          color: Color.fromARGB(255, 52, 191, 191),
                         ),
                       ),
                   ],
