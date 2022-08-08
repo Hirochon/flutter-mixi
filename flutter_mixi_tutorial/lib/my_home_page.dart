@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Row(
+        child: Column(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -73,6 +73,21 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            SizedBox(
+                height: 300,
+                width: 300,
+                child: GridView.count(
+                  crossAxisCount: 3,
+                  children: [
+                    for (var i = 0; i < 9; i++)
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: ColoredBox(
+                          color: Colors.amber,
+                        ),
+                      ),
+                  ],
+                ))
           ],
         ),
       ),
