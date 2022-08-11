@@ -1,4 +1,5 @@
 import 'package:flutter_mixi_tutorial/my_home_page.dart';
+import 'package:flutter_mixi_tutorial/sample_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       // OSのテーマ設定に合わせて変更できる
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: const MyHomePage(title: 'Nora Demo Home Page'),
+      // home: const MyHomePage(title: 'Nora Demo Home Page'),
+      home: const SamplePage(),
     );
   }
 }
