@@ -11,8 +11,49 @@ class SamplePage extends StatelessWidget {
         ),
         body: Column(
           mainAxisSize: MainAxisSize.min,
-          children: const [Text("Hoge"), Text("Fuga"), Text("Piyo")],
-          // children: [for (var i = 0; i < 10; i++) const Text("ああああ")]
+          children: [
+            const Text("Hoge"),
+            const Text("Fuga"),
+            const Text("Piyo"),
+            // // 1つ目
+            // SizedBox(
+            //   height: 400,
+            //   child: GridView.count(
+            //     crossAxisCount: 3,
+            //     children: [
+            //       for (var i = 0; i < 9; i++)
+            //         const Padding(
+            //             padding: EdgeInsets.all(8.0),
+            //             child: ColoredBox(color: Colors.blue))
+            //     ],
+            //   ),
+            // )
+
+            // // 2つ目
+            // Expanded(
+            //   child: GridView.count(
+            //     crossAxisCount: 3,
+            //     children: [
+            //       for (var i = 0; i < 9; i++)
+            //         const Padding(
+            //             padding: EdgeInsets.all(8.0),
+            //             child: ColoredBox(color: Colors.pinkAccent))
+            //     ],
+            //   ),
+            // )
+
+            // 3つ目
+            GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 3,
+              children: [
+                for (var i = 0; i < 9; i++)
+                  const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: ColoredBox(color: Colors.yellowAccent))
+              ],
+            )
+          ],
         ));
   }
 }
