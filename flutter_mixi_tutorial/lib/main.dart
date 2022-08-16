@@ -1,42 +1,56 @@
-import 'package:flutter_mixi_tutorial/my_home_page.dart';
-import 'package:flutter_mixi_tutorial/sample_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      // OSのテーマ設定に合わせて変更できる
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      // home: const MyHomePage(title: 'Nora Demo Home Page'),
-      home: const SamplePage(),
+      theme: ThemeData(primaryColor: Colors.blue),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("context サンプル"),
+        ),
+        body: Column(
+          children: [
+            Theme(
+              data: ThemeData(primaryColor: Colors.orange),
+              child: const Sample(title: 'Widget A'),
+            ),
+            Column(
+              children: [
+                const Sample(title: 'Widget B'),
+                Theme(
+                  data: ThemeData(
+                    primaryColor: Colors.pink,
+                  ),
+                  child: const Sample(title: 'Widget C'),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
     );
   }
 }
 
-// 標準でThemeData.light()とか用意してくれてる
-// 色かえたかたら下記みたいにかえる！
-final lightTheme = ThemeData.from(
-  colorScheme: const ColorScheme.light(
-    primary: Colors.black,
-    onPrimary: Colors.amber,
-    secondary: Colors.redAccent,
-  ),
-);
+class Sample extends StatelessWidget {
+  const Sample({Key? key, required this.title}) : super(key: key);
+  final String title;
 
-final darkTheme = ThemeData.from(
-  colorScheme: const ColorScheme.dark(
-    primary: Colors.blue,
-    onPrimary: Colors.white,
-    secondary: Colors.blueAccent,
-  ),
-);
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 200,
+      height: 100,
+      child:
+          ColoredBox(color: Theme.of(context).primaryColor, child: Text(title)),
+    );
+  }
+}
