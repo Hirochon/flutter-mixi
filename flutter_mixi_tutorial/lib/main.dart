@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mixi_tutorial/my_home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,32 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.blue),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("context サンプル"),
-        ),
-        body: Column(
-          children: [
-            Theme(
-              data: ThemeData(primaryColor: Colors.orange),
-              child: const Sample(title: 'Widget A'),
-            ),
-            Column(
-              children: [
-                const Sample(title: 'Widget B'),
-                Theme(
-                  data: ThemeData(
-                    primaryColor: Colors.pink,
-                  ),
-                  child: const Sample(title: 'Widget C'),
-                )
-              ],
-            )
-          ],
-        ),
-      ),
-    );
+        theme: ThemeData(primaryColor: Colors.blue),
+        home: const MyHomePage(title: "ここは青空"));
   }
 }
 
