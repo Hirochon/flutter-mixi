@@ -24,6 +24,16 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Color backGroundColor(Set<MaterialState> states) {
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+    };
+    if (states.any((interactiveStates.contains))) {
+      return Colors.blue;
+    }
+    return Colors.red;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,9 +42,22 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
+          children: [
+            SizedBox(
+              height: 150,
+              width: 200,
+              child: ColoredBox(
+                color: Colors.amber,
+                child: ListView.builder(
+                  itemCount: 30,
+                  itemBuilder: (context, index) {
+                    debugPrint("ListViewの中");
+                    return Text(index.toString());
+                  },
+                ),
+              ),
+            ),
             const Text(
               'You have pushed the button this many times:',
             ),
@@ -43,12 +66,16 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              FloatingActionButton(
-                  foregroundColor: Colors.black,
-                  backgroundColor: Colors.lime,
-                  onPressed: _decrementCounter,
-                  tooltip: 'りんご',
-                  child: const Icon(Icons.female)),
+              TextButton(
+                onPressed: _decrementCounter,
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.resolveWith(backGroundColor)),
+                child: const Text(
+                  "ここはここ",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
               FloatingActionButton(
                 backgroundColor: Colors.pink,
                 onPressed: _incrementCounter,

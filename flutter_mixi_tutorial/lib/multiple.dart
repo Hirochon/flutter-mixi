@@ -18,7 +18,7 @@ class _Multiple extends State<Multiple> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return Column(mainAxisSize: MainAxisSize.min, children: [
       Text('$_counter', style: Theme.of(context).textTheme.headline4),
       FloatingActionButton(
         backgroundColor: Colors.teal,
